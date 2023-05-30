@@ -1,0 +1,44 @@
+<RCC>
+    <qresource prefix="/images">
+        <file>images/a82ac377355059.5c8597ef33df5.png</file>
+        <file>images/admin.png</file>
+        <file>images/airCondition.png</file>
+        <file>images/AmyCrisp.png</file>
+        <file>images/AwesomePine.png</file>
+        <file>images/AzurLane.jpg</file>
+        <file>images/bag.png</file>
+        <file>images/blue.png</file>
+        <file>images/car.png</file>
+        <file>images/color.png</file>
+        <file>images/color-desgin.jpg</file>
+        <file>images/Copper.png</file>
+        <file>images/cover.png</file>
+        <file>images/cover-design.jpg</file>
+        <file>images/CoverMain.png</file>
+        <file>images/createRide.png</file>
+        <file>images/Dania.png</file>
+        <file>images/Delicate.jpg</file>
+        <file>images/DirtyBeauty.png</file>
+        <file>images/HeavenPeach.png</file>
+        <file>images/licence.png</file>
+        <file>images/manual.png</file>
+        <file>images/Mild.jpg</file>
+        <file>images/Moonrise.png</file>
+        <file>images/Moor.jpg</file>
+        <file>images/Mystic.png</file>
+        <file>images/people.png</file>
+        <file>images/profile.png</file>
+        <file>images/reserve.png</file>
+        <file>images/resources.qrc</file>
+        <file>images/rideCar.png</file>
+        <file>images/road2.png</file>
+        <file>images/roadtrip.png</file>
+        <file>images/Rose.png</file>
+        <file>images/rose2.png</file>
+        <file>images/search.png</file>
+        <file>images/SharpeyeEagle.png</file>
+        <file>images/StrictNovember.png</file>
+        <file>images/suitcase.png</file>
+        <file>images/white.png</file>
+    </qresource>
+</RCC>
