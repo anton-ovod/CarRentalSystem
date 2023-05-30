@@ -22,8 +22,9 @@ This project is a Car Rental System implemented using [Qt](https://www.qt.io/) f
 ### Installation
 
 1. Clone the repository to your local machine:
-
+```shell
 git clone https://github.com/anton-ovod/CarRentalSystem.git
+```
 
 2. Open the project in Qt Creator or your preferred IDE.
 
