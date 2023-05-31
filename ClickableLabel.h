@@ -1,16 +1,16 @@
-#ifndef CLICKABLELABLE_H
-#define CLICKABLELABLE_H
+#ifndef CLICKABLELABEL_H
+#define CLICKABLELABEL_H
 
 #include <QLabel>
 #include <QMouseEvent>
 
-class ClickableLable : public QLabel
+class ClickableLabel : public QLabel
 {
     Q_OBJECT
 
 public:
-    explicit ClickableLable(QWidget *parent = nullptr);
-    ~ClickableLable();
+    explicit ClickableLabel(QWidget *parent = nullptr);
+    ~ClickableLabel();
 
 signals:
     void clicked();

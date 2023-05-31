@@ -10,6 +10,8 @@
 #include <QtSql/QSqlError>
 #include <QtSql/QSqlQueryModel>
 
+#include "databasehandler.h"
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -24,5 +26,6 @@ public:
 
 private:
     Ui::MainWindow *ui;
+    QSqlDatabase& database = DatabaseHandler::getInstance().getDatabase();
 };
 #endif // MAINWINDOW_H

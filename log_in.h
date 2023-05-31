@@ -3,10 +3,16 @@
 
 #include <QWidget>
 #include <QString>
-#include <QtSql/QSqlQuery>
+#include <QSqlQuery>
 #include <QDebug>
 #include <QTimer>
 #include <QPainter>
+
+#include "databasehandler.h"
+#include "sign_in.h"
+#include "administrator.h"
+#include "mainwindow.h"
+
 
 namespace Ui {
 class Log_in;
@@ -24,11 +30,19 @@ public:
     void cleanLineEdit();
     void handleLabelClicked();
 
+    Sign_In *sign_in;
+    Administrator *admin;
+    MainWindow *main;
+
 protected:
     //void mousePressEvent(QMouseEvent* event) override;
 
+private slots:
+    void on_LogBtn_clicked();
+
 private:
     Ui::Log_in *ui;
+    QSqlDatabase& database = DatabaseHandler::getInstance().getDatabase();
 };
 
 #endif // LOG_IN_H

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>MainScreen</class>
- <widget class="QWidget" name="MainScreen">
+ <class>MainWindow</class>
+ <widget class="QWidget" name="MainWindow">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -19,23 +19,32 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QWidget" name="widget" native="true">
+  <property name="styleSheet">
+   <string notr="true">background-image: none;</string>
+  </property>
+  <widget class="QWidget" name="MainData" native="true">
    <property name="geometry">
     <rect>
      <x>70</x>
      <y>30</y>
-     <width>651</width>
+     <width>611</width>
      <height>651</height>
     </rect>
    </property>
-   <widget class="QStackedWidget" name="stackedWidget">
+   <widget class="QStackedWidget" name="Main">
     <property name="geometry">
      <rect>
       <x>0</x>
       <y>20</y>
-      <width>511</width>
+      <width>571</width>
       <height>571</height>
      </rect>
+    </property>
+    <property name="contextMenuPolicy">
+     <enum>Qt::NoContextMenu</enum>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::LeftToRight</enum>
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
@@ -63,12 +72,12 @@ border-radius: 20px;
     <property name="currentIndex">
      <number>1</number>
     </property>
-    <widget class="QWidget" name="page1">
+    <widget class="QWidget" name="OrderNumber">
      <widget class="QPushButton" name="backAccountBtn">
       <property name="geometry">
        <rect>
-        <x>320</x>
-        <y>490</y>
+        <x>390</x>
+        <y>500</y>
         <width>144</width>
         <height>44</height>
        </rect>
@@ -95,9 +104,9 @@ border-radius: 20px;
      <widget class="QLabel" name="label_6">
       <property name="geometry">
        <rect>
-        <x>130</x>
-        <y>170</y>
-        <width>241</width>
+        <x>160</x>
+        <y>190</y>
+        <width>251</width>
         <height>51</height>
        </rect>
       </property>
@@ -111,12 +120,12 @@ color: rgb(92, 89, 106);
        <string>Your order Number:</string>
       </property>
      </widget>
-     <widget class="QTableView" name="orderNumber">
+     <widget class="QTableView" name="orderNumberView">
       <property name="geometry">
        <rect>
-        <x>180</x>
+        <x>170</x>
         <y>260</y>
-        <width>131</width>
+        <width>211</width>
         <height>41</height>
        </rect>
       </property>
@@ -130,7 +139,7 @@ color: rgb(244, 244, 244);
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="page2">
+    <widget class="QWidget" name="Profile">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
        <horstretch>0</horstretch>
@@ -175,12 +184,12 @@ color: rgb(244, 244, 244);
        <string>Edit Account</string>
       </property>
      </widget>
-     <widget class="QWidget" name="profile" native="true">
+     <widget class="QWidget" name="MainProfile" native="true">
       <property name="geometry">
        <rect>
         <x>30</x>
         <y>40</y>
-        <width>431</width>
+        <width>481</width>
         <height>401</height>
        </rect>
       </property>
@@ -200,12 +209,12 @@ QLabel {
 color: rgb(92, 89, 106);
 }</string>
       </property>
-      <widget class="QLabel" name="label">
+      <widget class="QLabel" name="HelloLabel">
        <property name="geometry">
         <rect>
-         <x>170</x>
+         <x>150</x>
          <y>30</y>
-         <width>101</width>
+         <width>151</width>
          <height>51</height>
         </rect>
        </property>
@@ -215,15 +224,18 @@ color: rgb(92, 89, 106);
         </font>
        </property>
        <property name="text">
-        <string>   HELLO</string>
+        <string>HELLO</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
        </property>
       </widget>
-      <widget class="QLabel" name="label_4">
+      <widget class="QLabel" name="EmailLabel">
        <property name="geometry">
         <rect>
          <x>30</x>
          <y>190</y>
-         <width>81</width>
+         <width>301</width>
          <height>31</height>
         </rect>
        </property>
@@ -236,12 +248,12 @@ color: rgb(92, 89, 106);
         <string>Your Email:</string>
        </property>
       </widget>
-      <widget class="QLabel" name="label_5">
+      <widget class="QLabel" name="PhoneNumberLabel">
        <property name="geometry">
         <rect>
          <x>30</x>
          <y>300</y>
-         <width>161</width>
+         <width>311</width>
          <height>31</height>
         </rect>
        </property>
@@ -254,10 +266,10 @@ color: rgb(92, 89, 106);
         <string>Your Phone Number:</string>
        </property>
       </widget>
-      <widget class="QLabel" name="label_7">
+      <widget class="QLabel" name="ProfileLogo">
        <property name="geometry">
         <rect>
-         <x>40</x>
+         <x>20</x>
          <y>10</y>
          <width>101</width>
          <height>91</height>
@@ -272,7 +284,7 @@ color: rgb(92, 89, 106);
         <string/>
        </property>
        <property name="pixmap">
-        <pixmap resource="images.qrc">:/images/profile.png</pixmap>
+        <pixmap resource="images/resources.qrc">:/images/profile.png</pixmap>
        </property>
        <property name="scaledContents">
         <bool>true</bool>
@@ -284,7 +296,7 @@ color: rgb(92, 89, 106);
          <x>20</x>
          <y>230</y>
          <width>331</width>
-         <height>31</height>
+         <height>41</height>
         </rect>
        </property>
        <property name="font">
@@ -299,13 +311,12 @@ color: rgb(92, 89, 106);
          <x>20</x>
          <y>340</y>
          <width>331</width>
-         <height>31</height>
+         <height>41</height>
         </rect>
        </property>
        <property name="font">
         <font>
          <pointsize>20</pointsize>
-         <weight>50</weight>
          <italic>false</italic>
          <bold>false</bold>
         </font>
@@ -314,16 +325,15 @@ color: rgb(92, 89, 106);
       <widget class="QTableView" name="showUserName">
        <property name="geometry">
         <rect>
-         <x>280</x>
-         <y>40</y>
-         <width>121</width>
-         <height>31</height>
+         <x>310</x>
+         <y>30</y>
+         <width>131</width>
+         <height>51</height>
         </rect>
        </property>
        <property name="font">
         <font>
          <pointsize>26</pointsize>
-         <weight>50</weight>
          <italic>false</italic>
          <bold>false</bold>
         </font>
@@ -338,11 +348,11 @@ color: rgb(80, 77, 89);
     </widget>
    </widget>
   </widget>
-  <widget class="QWidget" name="widget_3" native="true">
+  <widget class="QWidget" name="FindRide" native="true">
    <property name="geometry">
     <rect>
-     <x>660</x>
-     <y>60</y>
+     <x>720</x>
+     <y>50</y>
      <width>331</width>
      <height>271</height>
     </rect>
@@ -360,7 +370,7 @@ background: rgba(232, 216, 255, 128);
 }
 </string>
    </property>
-   <widget class="QLabel" name="label_2">
+   <widget class="QLabel" name="FindRideLogo">
     <property name="geometry">
      <rect>
       <x>50</x>
@@ -373,7 +383,7 @@ background: rgba(232, 216, 255, 128);
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap resource="images.qrc">:/images/rideCar.png</pixmap>
+     <pixmap resource="images/resources.qrc">:/images/rideCar.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -382,10 +392,10 @@ background: rgba(232, 216, 255, 128);
    <widget class="QPushButton" name="findRideBtn">
     <property name="geometry">
      <rect>
-      <x>90</x>
+      <x>80</x>
       <y>190</y>
-      <width>161</width>
-      <height>51</height>
+      <width>180</width>
+      <height>50</height>
      </rect>
     </property>
     <property name="font">
@@ -396,18 +406,21 @@ background: rgba(232, 216, 255, 128);
     <property name="cursor">
      <cursorShape>PointingHandCursor</cursorShape>
     </property>
+    <property name="contextMenuPolicy">
+     <enum>Qt::NoContextMenu</enum>
+    </property>
     <property name="text">
      <string>FIND RIDE</string>
     </property>
    </widget>
   </widget>
-  <widget class="QWidget" name="widget_4" native="true">
+  <widget class="QWidget" name="CreateRide" native="true">
    <property name="geometry">
     <rect>
-     <x>660</x>
+     <x>720</x>
      <y>360</y>
      <width>331</width>
-     <height>271</height>
+     <height>291</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -424,7 +437,7 @@ background: rgba(232, 216, 255, 128);
 
 </string>
    </property>
-   <widget class="QLabel" name="label_3">
+   <widget class="QLabel" name="CreateRideBtn">
     <property name="geometry">
      <rect>
       <x>50</x>
@@ -437,7 +450,7 @@ background: rgba(232, 216, 255, 128);
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap resource="images.qrc">:/images/createRide.png</pixmap>
+     <pixmap resource="images/resources.qrc">:/images/createRide.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -446,10 +459,10 @@ background: rgba(232, 216, 255, 128);
    <widget class="QPushButton" name="creatRideBtn">
     <property name="geometry">
      <rect>
-      <x>90</x>
+      <x>80</x>
       <y>180</y>
-      <width>161</width>
-      <height>51</height>
+      <width>180</width>
+      <height>50</height>
      </rect>
     </property>
     <property name="font">
@@ -460,16 +473,19 @@ background: rgba(232, 216, 255, 128);
     <property name="cursor">
      <cursorShape>PointingHandCursor</cursorShape>
     </property>
+    <property name="layoutDirection">
+     <enum>Qt::LeftToRight</enum>
+    </property>
     <property name="text">
      <string>CREAT RIDE</string>
     </property>
    </widget>
   </widget>
-  <widget class="clickableLabel" name="goBack">
+  <widget class="ClickableLabel" name="BackBtn">
    <property name="geometry">
     <rect>
-     <x>910</x>
-     <y>630</y>
+     <x>970</x>
+     <y>650</y>
      <width>81</width>
      <height>31</height>
     </rect>
@@ -477,7 +493,6 @@ background: rgba(232, 216, 255, 128);
    <property name="font">
     <font>
      <pointsize>-1</pointsize>
-     <weight>50</weight>
      <italic>false</italic>
      <bold>false</bold>
      <underline>true</underline>
@@ -485,6 +500,9 @@ background: rgba(232, 216, 255, 128);
    </property>
    <property name="cursor">
     <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+   <property name="contextMenuPolicy">
+    <enum>Qt::NoContextMenu</enum>
    </property>
    <property name="styleSheet">
     <string notr="true">QLabel {
@@ -501,17 +519,20 @@ color: rgba(242, 242, 220, 153);
    <property name="text">
     <string>Sign Out</string>
    </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
   </widget>
  </widget>
  <customwidgets>
   <customwidget>
-   <class>clickableLabel</class>
+   <class>ClickableLabel</class>
    <extends>QLabel</extends>
-   <header location="global">clickableLabel.h</header>
+   <header>ClickableLabel.h</header>
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="images.qrc"/>
+  <include location="images/resources.qrc"/>
  </resources>
  <connections/>
 </ui>

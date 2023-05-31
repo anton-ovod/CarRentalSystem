@@ -11,14 +11,28 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets Sql)
 
 set(PROJECT_SOURCES
         main.cpp
+        mainwindow.cpp
+        mainwindow.h
+        mainwindow.ui
         log_in.cpp
         log_in.ui
-        ClickableLable.cpp
-        ClickableLable.h
         log_in.h
+        sign_in.cpp
+        sign_in.h
+        sign_in.ui
+        administrator.cpp
+        administrator.h
+        administrator.ui
+        ClickableLabel.cpp
+        ClickableLabel.h
+        custommessagebox.cpp
+        custommessagebox.h
+        databasehandler.cpp
+        databasehandler.h
         res.qrc
 )
 
@@ -45,7 +59,7 @@ else()
     endif()
 endif()
 
-target_link_libraries(CarRentalSystem PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
+target_link_libraries(CarRentalSystem PRIVATE Qt${QT_VERSION_MAJOR}::Widgets Qt${QT_VERSION_MAJOR}::Sql)
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 # very important line, delete this and nothing is working
