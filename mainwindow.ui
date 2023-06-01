@@ -73,6 +73,15 @@ border-radius: 20px;
      <number>1</number>
     </property>
     <widget class="QWidget" name="OrderNumber">
+     <property name="styleSheet">
+      <string notr="true">QLineEdit{
+background: rgba(251, 239, 220, 15);
+border-radius: 15px;
+color: rgb(80, 77, 89);
+selection-background-color: rgba(245, 245, 245, 0);
+selection-color:  rgb(80, 77, 89);
+}</string>
+     </property>
      <widget class="QPushButton" name="backAccountBtn">
       <property name="geometry">
        <rect>
@@ -120,22 +129,14 @@ color: rgb(92, 89, 106);
        <string>Your order Number:</string>
       </property>
      </widget>
-     <widget class="QTableView" name="orderNumberView">
+     <widget class="QLineEdit" name="showOrderNumber">
       <property name="geometry">
        <rect>
-        <x>170</x>
+        <x>180</x>
         <y>260</y>
-        <width>211</width>
+        <width>201</width>
         <height>41</height>
        </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">QTableView {
-background: rgba(174, 174, 174, 10);
-border-radius: 15px;
-font-size: 26px;
-color: rgb(244, 244, 244);
-}</string>
       </property>
      </widget>
     </widget>
@@ -155,7 +156,7 @@ color: rgb(244, 244, 244);
      <widget class="QPushButton" name="tripsBtn">
       <property name="geometry">
        <rect>
-        <x>270</x>
+        <x>340</x>
         <y>470</y>
         <width>141</width>
         <height>41</height>
@@ -194,15 +195,12 @@ color: rgb(244, 244, 244);
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">QTableView{
+       <string notr="true">QLineEdit{
 background: rgba(251, 239, 220, 15);
 border-radius: 15px;
 color: rgb(80, 77, 89);
 selection-background-color: rgba(245, 245, 245, 0);
 selection-color:  rgb(80, 77, 89);
-}
-
-QWidget {
 }
 
 QLabel {
@@ -212,9 +210,9 @@ color: rgb(92, 89, 106);
       <widget class="QLabel" name="HelloLabel">
        <property name="geometry">
         <rect>
-         <x>150</x>
+         <x>130</x>
          <y>30</y>
-         <width>151</width>
+         <width>131</width>
          <height>51</height>
         </rect>
        </property>
@@ -280,22 +278,28 @@ color: rgb(92, 89, 106);
          <pointsize>15</pointsize>
         </font>
        </property>
+       <property name="contextMenuPolicy">
+        <enum>Qt::NoContextMenu</enum>
+       </property>
        <property name="text">
         <string/>
        </property>
        <property name="pixmap">
-        <pixmap resource="images/resources.qrc">:/images/profile.png</pixmap>
+        <pixmap resource="res.qrc">:/images/images/profile.png</pixmap>
        </property>
        <property name="scaledContents">
         <bool>true</bool>
        </property>
       </widget>
-      <widget class="QTableView" name="showEmail">
+      <widget class="QLineEdit" name="showUserName">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
        <property name="geometry">
         <rect>
-         <x>20</x>
-         <y>230</y>
-         <width>331</width>
+         <x>272</x>
+         <y>37</y>
+         <width>201</width>
          <height>41</height>
         </rect>
        </property>
@@ -304,44 +308,59 @@ color: rgb(92, 89, 106);
          <pointsize>20</pointsize>
         </font>
        </property>
+       <property name="mouseTracking">
+        <bool>false</bool>
+       </property>
+       <property name="acceptDrops">
+        <bool>false</bool>
+       </property>
+       <property name="inputMask">
+        <string notr="true"/>
+       </property>
+       <property name="frame">
+        <bool>false</bool>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
       </widget>
-      <widget class="QTableView" name="showPhoneNumber">
+      <widget class="QLineEdit" name="showEmail">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
        <property name="geometry">
         <rect>
-         <x>20</x>
-         <y>340</y>
-         <width>331</width>
+         <x>30</x>
+         <y>240</y>
+         <width>311</width>
          <height>41</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>20</pointsize>
-         <italic>false</italic>
-         <bold>false</bold>
-        </font>
-       </property>
-      </widget>
-      <widget class="QTableView" name="showUserName">
-       <property name="geometry">
-        <rect>
-         <x>310</x>
-         <y>30</y>
-         <width>131</width>
-         <height>51</height>
         </rect>
        </property>
        <property name="font">
         <font>
          <pointsize>26</pointsize>
-         <italic>false</italic>
-         <bold>false</bold>
         </font>
        </property>
-       <property name="styleSheet">
-        <string notr="true">QTableView {
-color: rgb(80, 77, 89);
-}</string>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="ShowPhoneNumber">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>347</y>
+         <width>311</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>26</pointsize>
+        </font>
        </property>
       </widget>
      </widget>
@@ -383,7 +402,7 @@ background: rgba(232, 216, 255, 128);
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap resource="images/resources.qrc">:/images/rideCar.png</pixmap>
+     <pixmap resource="res.qrc">:/images/images/rideCar.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -450,7 +469,7 @@ background: rgba(232, 216, 255, 128);
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap resource="images/resources.qrc">:/images/createRide.png</pixmap>
+     <pixmap resource="res.qrc">:/images/images/createRide.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -532,7 +551,7 @@ color: rgba(242, 242, 220, 153);
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="images/resources.qrc"/>
+  <include location="res.qrc"/>
  </resources>
  <connections/>
 </ui>

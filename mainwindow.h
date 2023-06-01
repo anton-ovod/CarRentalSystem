@@ -3,14 +3,16 @@
 
 #include <QWidget>
 #include <QPainter>
-#include <QtSql/QSqlDatabase>
+#include <QSqlDatabase>
 #include <QMessageBox>
-#include <QtSql/QSqlTableModel>
+#include <QSqlTableModel>
 #include <QDebug>
-#include <QtSql/QSqlError>
-#include <QtSql/QSqlQueryModel>
+#include <QSqlError>
+#include <QSqlQueryModel>
 
 #include "databasehandler.h"
+#include "ClickableLabel.h"
+#include "custommessagebox.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -21,8 +23,16 @@ class MainWindow : public QWidget
     Q_OBJECT
 
 public:
-    MainWindow(QWidget *parent = nullptr);
+    explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+
+    void paintEvent(QPaintEvent *);
+    QString CurrentUserName;
+    void init();
+    void myTrips();
+
+signals:
+    void backToLogIn();
 
 private:
     Ui::MainWindow *ui;

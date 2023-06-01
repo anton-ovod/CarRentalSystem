@@ -8,21 +8,21 @@ Administrator::Administrator(QWidget *parent) :
     ui->setupUi(this);
     this->setFixedSize(800, 600);
     this->setWindowTitle("Administration");
-
-    appendData();
-
     connect(ui->searchLine, SIGNAL(textChanged(QString)), this, SLOT(search()));
-
 }
 
 void Administrator::appendData()
 {
-    tableModel = new QSqlTableModel;
-    tableModel->setTable("USERS");
-    tableModel->select();
-    tableModel->removeColumn(0);
-    ui->usersView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-    ui->usersView->setModel(tableModel);
+        tableModel = new QSqlTableModel(this);
+        tableModel->setTable("USERS");
+        tableModel->select();
+
+        ui->usersView->setModel(tableModel);
+        ui->usersView->hideColumn(0);
+        ui->usersView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+        ui->usersView->verticalHeader()->setVisible(false);
+
+        tableModel->setEditStrategy(QSqlTableModel::OnFieldChange);
 }
 
 void Administrator::paintEvent(QPaintEvent *)
@@ -35,12 +35,15 @@ void Administrator::paintEvent(QPaintEvent *)
 
 void Administrator::search()
 {
-    QSqlQueryModel *model = new QSqlQueryModel;
-    QString search, data;
-    search = ui->searchLine->text();
-    data = "SELECT UserName as UserName, Password as Password, Email as Email, PhoneNumber as PhoneNumber, OrderNumber as OrderNumber FROM USERS WHERE UserName LIKE '%"+search+"%'";
-    model->setQuery(data);
-    ui->usersView->setModel(model);
+    QString search = ui->searchLine->text();
+
+    tableModel->setTable("USERS");
+
+    QString queryStr = QString("UserName LIKE '%%1%'").arg(search);
+    tableModel->setFilter(queryStr);
+    tableModel->select();
+    ui->usersView->setModel(tableModel);
+    ui->usersView->hideColumn(0);
 }
 
 void Administrator::on_BackBtn_clicked()
@@ -51,5 +54,6 @@ void Administrator::on_BackBtn_clicked()
 
 Administrator::~Administrator()
 {
+    database.close();
     delete ui;
 }

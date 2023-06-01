@@ -29,7 +29,7 @@ void Sign_In::insertData()
 
     if(sql.exec())
     {
-        CustomMessageBox messageBox("User has been succesfully added \n Back to Log In page");
+        CustomMessageBox messageBox("User has been succesfully added");
         int result = messageBox.exec();
         if (result == QMessageBox::Ok) {
             messageBox.close();
@@ -115,10 +115,10 @@ void Sign_In::on_signBtn_clicked()
             {
                 insertData();
                 cleanLineEdit();
-
             }
         }
     }
+    database.close();
 }
 
 

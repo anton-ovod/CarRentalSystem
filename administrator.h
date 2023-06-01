@@ -2,13 +2,14 @@
 #define ADMINISTRATOR_H
 
 #include <QWidget>
+#include <QLineEdit>
 #include <QtSql>
 #include <QSqlTableModel>
 #include <QPainter>
 #include <QDebug>
 
 #include "databasehandler.h"
-// #include "custommessagebox.h"
+#include "custommessagebox.h"
 
 namespace Ui {
 class Administrator;

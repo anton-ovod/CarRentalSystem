@@ -28,14 +28,15 @@ public:
 
     void paintEvent(QPaintEvent *) override;
     void cleanLineEdit();
-    void handleLabelClicked();
+    void HandleLogInInput();
+    void adminShow();
+    void mainWindowShow();
 
     Sign_In *sign_in;
     Administrator *admin;
     MainWindow *main;
 
-protected:
-    //void mousePressEvent(QMouseEvent* event) override;
+
 
 private slots:
     void on_LogBtn_clicked();
@@ -43,6 +44,8 @@ private slots:
 private:
     Ui::Log_in *ui;
     QSqlDatabase& database = DatabaseHandler::getInstance().getDatabase();
+    QString UserName;
+    QString Password;
 };
 
 #endif // LOG_IN_H
