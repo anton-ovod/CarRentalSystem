@@ -27,6 +27,9 @@ set(PROJECT_SOURCES
         administrator.cpp
         administrator.h
         administrator.ui
+        updateprofile.cpp
+        updateprofile.h
+        updateprofile.ui
         ClickableLabel.cpp
         ClickableLabel.h
         custommessagebox.cpp

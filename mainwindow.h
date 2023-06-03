@@ -10,6 +10,7 @@
 #include <QSqlError>
 #include <QSqlQueryModel>
 
+#include "updateprofile.h"
 #include "databasehandler.h"
 #include "ClickableLabel.h"
 #include "custommessagebox.h"
@@ -34,8 +35,14 @@ public:
 signals:
     void backToLogIn();
 
+private slots:
+    void on_editBtn_clicked();
+
 private:
     Ui::MainWindow *ui;
+    UpdateProfile *updatePage;
+    QString queryStr;
+    QSqlQuery query;
     QSqlDatabase& database = DatabaseHandler::getInstance().getDatabase();
 };
 #endif // MAINWINDOW_H

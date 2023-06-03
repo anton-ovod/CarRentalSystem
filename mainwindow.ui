@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1100</width>
-    <height>717</height>
+    <height>700</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -27,7 +27,7 @@
     <rect>
      <x>70</x>
      <y>30</y>
-     <width>611</width>
+     <width>661</width>
      <height>651</height>
     </rect>
    </property>
@@ -130,6 +130,9 @@ color: rgb(92, 89, 106);
       </property>
      </widget>
      <widget class="QLineEdit" name="showOrderNumber">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>180</x>
@@ -137,6 +140,14 @@ color: rgb(92, 89, 106);
         <width>201</width>
         <height>41</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
       </property>
      </widget>
     </widget>
@@ -338,7 +349,7 @@ color: rgb(92, 89, 106);
        </property>
        <property name="font">
         <font>
-         <pointsize>26</pointsize>
+         <pointsize>20</pointsize>
         </font>
        </property>
        <property name="alignment">
@@ -359,8 +370,11 @@ color: rgb(92, 89, 106);
        </property>
        <property name="font">
         <font>
-         <pointsize>26</pointsize>
+         <pointsize>20</pointsize>
         </font>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
        </property>
       </widget>
      </widget>
@@ -394,7 +408,7 @@ background: rgba(232, 216, 255, 128);
      <rect>
       <x>50</x>
       <y>20</y>
-      <width>221</width>
+      <width>251</width>
       <height>181</height>
      </rect>
     </property>
@@ -461,7 +475,7 @@ background: rgba(232, 216, 255, 128);
      <rect>
       <x>50</x>
       <y>10</y>
-      <width>231</width>
+      <width>251</width>
       <height>171</height>
      </rect>
     </property>

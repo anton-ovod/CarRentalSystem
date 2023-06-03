@@ -21,22 +21,24 @@ Log_in::Log_in(QWidget *parent) :
     connect(ui->SignInBtn, &ClickableLabel::clicked, [=](){
 
         sign_in->show();
-        this->close();
+        this->hide();
     });
+
     connect(sign_in, &Sign_In::backLogIn, [=](){
         cleanLineEdit();
         this->show();
-        sign_in->close();
+        sign_in->hide();
 
     });
+
     connect(admin, &Administrator::backToLogin, [=]() {
         this->show();
-        admin->close();
+        admin->hide();
     });
 
     connect(main, &MainWindow::backToLogIn, [=](){
         QTimer::singleShot(500, this, [=](){
-                main->close();
+                main->hide();
                 this->show();
         });
     });
@@ -56,7 +58,6 @@ void Log_in::cleanLineEdit()
 {
     ui->userNameTxt->clear();
     ui->passwordTxt->clear();
-
 }
 
 

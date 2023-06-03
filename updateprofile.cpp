@@ -1,46 +1,25 @@
-#include "mainwindow.h"
-#include "ui_mainwindow.h"
+#include "updateprofile.h"
+#include "ui_updateprofile.h"
 
-MainWindow::MainWindow(QWidget *parent)
-    : QWidget(parent)
-    , ui(new Ui::MainWindow)
+UpdateProfile::UpdateProfile(QWidget *parent) :
+    QDialog(parent),
+    ui(new Ui::UpdateProfile)
 {
     ui->setupUi(this);
-    this->setFixedSize(1100, 700);
-    this->setWindowTitle("Main Page");
-    updatePage = new UpdateProfile;
-    ui->Main->setCurrentIndex(1);
-
-    connect(ui->tripsBtn, &QPushButton::clicked, [=](){
-        myTrips();
-        ui->Main->setCurrentIndex(0);
-    });
-
-    connect(ui->backAccountBtn, &QPushButton::clicked, [=](){
-        ui->Main->setCurrentIndex(1);
-    });
-
-    connect(ui->BackBtn, &ClickableLabel::clicked, [=]()
-            {
-
-        emit this->backToLogIn();
-    });
-
-    connect(updatePage, &UpdateProfile::ChangedData, [=](){
-        CurrentUserName = updatePage->CurrentUserName;
-        init();
-    });
+    this->setFixedSize(400, 450);
+    this->setWindowTitle("Update Profile");
 }
 
-void MainWindow::paintEvent(QPaintEvent *)
+void UpdateProfile::paintEvent(QPaintEvent *)
 {
     QPainter painter(this);
     QPixmap pix;
     pix.load(":/images/images/rose2.png");
-    painter.drawPixmap(0, 0, pix);
+    painter.drawPixmap(0,0,pix);
 }
 
-void MainWindow::init()
+
+void UpdateProfile::InitData()
 {
     if(!database.open())
     {
@@ -116,28 +95,11 @@ void MainWindow::init()
             if(query.next())
             {
                 QString UserPhoneNumber = query.value(0).toString();
-                ui->ShowPhoneNumber->setText(UserPhoneNumber);
+                ui->showPhoneNumber->setText(UserPhoneNumber);
             }
         }
 
-        database.close();
-    }
-
-}
-
-void MainWindow::myTrips()
-{
-    if(!database.open())
-    {
-        CustomMessageBox messageBox("Something went wrong!");
-        int result = messageBox.exec();
-        if (result == QMessageBox::Ok) {
-            messageBox.close();
-        }
-    }
-    else
-    {
-        queryStr = QString("SELECT OrderNumber FROM USERS WHERE UserName = '"+CurrentUserName+"'");
+        queryStr = QString("SELECT Password FROM USERS WHERE UserName = '"+CurrentUserName+"'");
 
         if(!query.exec(queryStr))
         {
@@ -151,24 +113,85 @@ void MainWindow::myTrips()
         {
             if(query.next())
             {
-                QString UserOrderNumber = query.value(0).toString();
-                ui->showOrderNumber->setText(UserOrderNumber);
+                QString UserPassword = query.value(0).toString();
+                ui->showPassword->setText(UserPassword);
             }
+        }
+
+        database.close();
+    }
+}
+
+
+void UpdateProfile::on_cancelBtn_clicked()
+{
+    emit this->ChangedData();
+    this->hide();
+}
+
+void UpdateProfile::on_updateBtn_clicked()
+{
+    QString newName = ui->showUserName->text();
+    QString newEmail = ui->showEmail->text();
+    QString newPhoneNumber = ui->showPhoneNumber->text();
+    QString newPassword = ui->showPassword->text();
+
+    if(!database.open())
+    {
+        CustomMessageBox messageBox("Something went wrong!");
+        int result = messageBox.exec();
+        if (result == QMessageBox::Ok) {
+            messageBox.close();
+        }
+    }
+    else
+    {
+        // getting the id of CurrentUser
+        queryStr = "SELECT id FROM USERS WHERE UserName = '"+CurrentUserName+"'";
+
+        if(!query.exec(queryStr))
+        {
+            CustomMessageBox messageBox("Something went wrong!");
+            int result = messageBox.exec();
+            if (result == QMessageBox::Ok) {
+                messageBox.close();
+            }
+        }
+        else
+        {
+            int CurrentUserID;
+            if(query.next())
+            {
+                CurrentUserID = query.value(0).toInt();
+            }
+        }
+
+        queryStr = "UPDATE USERS SET UserName = '"+newName+"', Password = '"+newPassword+"', PhoneNumber = '"+newPhoneNumber+"', Email = '"+newEmail+"'";
+
+        if(!query.exec(queryStr))
+        {
+            CustomMessageBox messageBox("Something went wrong!");
+            int result = messageBox.exec();
+            if (result == QMessageBox::Ok) {
+                messageBox.close();
+            }
+        }
+        else
+        {
+            CustomMessageBox messageBox("Your profile has been succesfully updated!");
+            int result = messageBox.exec();
+            if (result == QMessageBox::Ok) {
+                messageBox.close();
+            }
+            CurrentUserName = newName;
         }
         database.close();
     }
 
+
 }
-MainWindow::~MainWindow()
+
+UpdateProfile::~UpdateProfile()
 {
     delete ui;
 }
-
-
-void MainWindow::on_editBtn_clicked()
-{
-    updatePage->CurrentUserName = CurrentUserName;
-    updatePage->show();
-    updatePage->InitData();
-}
-

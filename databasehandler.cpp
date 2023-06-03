@@ -42,8 +42,8 @@ bool DatabaseHandler::initializeDatabase()
                                "UserName TEXT,"
                                "Password TEXT,"
                                "Email TEXT,"
-                               "PhoneNumber INTEGER"
-                               "OrderNumber INTEGER"
+                               "PhoneNumber TEXT,"
+                               "OrderNumber TEXT DEFAULT 'No Orders'"
                                ")";
     if(!query.exec(createUsersTabel))
     {
