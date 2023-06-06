@@ -94,7 +94,7 @@ void Log_in::HandleLogInInput()
         if(query.next())
         {
 
-            if(UserName == "Admin" && Password == "admin")
+            if(UserName == "admin" && Password == "admin")
             {
                 adminShow();
             }

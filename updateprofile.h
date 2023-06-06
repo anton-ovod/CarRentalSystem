@@ -41,6 +41,7 @@ private:
     QString PhoneNumber;
     QString Email;
     QString Password;
+    int CurrentUserID;
     QSqlDatabase& database = DatabaseHandler::getInstance().getDatabase();
 
 };

@@ -159,16 +159,15 @@ void UpdateProfile::on_updateBtn_clicked()
         }
         else
         {
-            int CurrentUserID;
+
             if(query.next())
             {
                 CurrentUserID = query.value(0).toInt();
             }
         }
-
-        queryStr = "UPDATE USERS SET UserName = '"+newName+"', Password = '"+newPassword+"', PhoneNumber = '"+newPhoneNumber+"', Email = '"+newEmail+"'";
-
-        if(!query.exec(queryStr))
+        query.prepare("UPDATE USERS SET UserName = '"+newName+"', Password = '"+newPassword+"', PhoneNumber = '"+newPhoneNumber+"', Email = '"+newEmail+"' WHERE Id = :ID");
+        query.bindValue(":ID", CurrentUserID);
+        if(!query.exec())
         {
             CustomMessageBox messageBox("Something went wrong!");
             int result = messageBox.exec();
@@ -187,8 +186,6 @@ void UpdateProfile::on_updateBtn_clicked()
         }
         database.close();
     }
-
-
 }
 
 UpdateProfile::~UpdateProfile()

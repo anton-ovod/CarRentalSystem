@@ -32,7 +32,7 @@
    <string>Dialog</string>
   </property>
   <property name="styleSheet">
-   <string notr="true"/>
+   <string notr="true">background: none;</string>
   </property>
   <widget class="QWidget" name="MainData" native="true">
    <property name="geometry">

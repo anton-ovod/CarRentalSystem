@@ -14,6 +14,7 @@
 #include "databasehandler.h"
 #include "ClickableLabel.h"
 #include "custommessagebox.h"
+#include "findride.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -31,6 +32,7 @@ public:
     QString CurrentUserName;
     void init();
     void myTrips();
+    FindRide *findRide;
 
 signals:
     void backToLogIn();

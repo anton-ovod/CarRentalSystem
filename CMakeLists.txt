@@ -30,6 +30,12 @@ set(PROJECT_SOURCES
         updateprofile.cpp
         updateprofile.h
         updateprofile.ui
+        findride.cpp
+        findride.h
+        findride.ui
+        reservecar.cpp
+        reservecar.h
+        reservecar.ui
         ClickableLabel.cpp
         ClickableLabel.h
         custommessagebox.cpp

@@ -49,6 +49,22 @@ bool DatabaseHandler::initializeDatabase()
     {
         qDebug() << "Error creating <Users> table : "<< query.lastError().text();
     }
+
+
+    QString createCarsTabel = "CREATE TABLE IF NOT EXISTS CARS ("
+                               "id INTEGER PRIMARY KEY AUTOINCREMENT,"
+                               "CarName TEXT,"
+                               "CarModel TEXT,"
+                               "CarCapacity TEXT,"
+                               "CarColour TEXT,"
+                               "CarOwner TEXT,"
+                               "CarPrice TEXT,"
+                               "CarHolder TEXT DEFAULT 'Ready for rent'"
+                               ")";
+    if(!query.exec(createCarsTabel))
+    {
+        qDebug() << "Error creating <CARS> table:" << query.lastError().text();
+    }
     db.close();
 
     isInitialized = true;

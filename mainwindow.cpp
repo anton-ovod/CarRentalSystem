@@ -10,7 +10,7 @@ MainWindow::MainWindow(QWidget *parent)
     this->setWindowTitle("Main Page");
     updatePage = new UpdateProfile;
     ui->Main->setCurrentIndex(1);
-
+    findRide = new FindRide;
     connect(ui->tripsBtn, &QPushButton::clicked, [=](){
         myTrips();
         ui->Main->setCurrentIndex(0);
@@ -29,6 +29,18 @@ MainWindow::MainWindow(QWidget *parent)
     connect(updatePage, &UpdateProfile::ChangedData, [=](){
         CurrentUserName = updatePage->CurrentUserName;
         init();
+    });
+
+    connect(ui->findRideBtn, &QPushButton::clicked, [=](){
+                findRide->CurrentUserName = CurrentUserName;
+                findRide->show();
+                this->hide();
+            });
+
+    connect(findRide, &FindRide::backToMainWindowPage, [=](){
+        this->show();
+        findRide->hide();
+
     });
 }
 
