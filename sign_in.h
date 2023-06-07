@@ -9,6 +9,8 @@
 #include <QDebug>
 #include <QSqlError>
 #include <QPainter>
+#include <QRegularExpression>
+#include <QPixmap>
 
 #include "databasehandler.h"
 #include "custommessagebox.h"
@@ -29,6 +31,7 @@ public:
     void paintEvent(QPaintEvent *);
     void cleanLineEdit();
     void insertData();
+    void CheckPassword();
 
 signals:
     void backLogIn();
@@ -42,7 +45,6 @@ private slots:
 private:
     Ui::Sign_In *ui;
     QSqlDatabase& database = DatabaseHandler::getInstance().getDatabase();
-
 
     QString signName;
     QString signPassword;

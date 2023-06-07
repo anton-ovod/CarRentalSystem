@@ -9,9 +9,10 @@
 #include <QSqlError>
 #include <QSqlDatabase>
 #include <QDateTime>
-#include <QtGlobal>
+#include <random>
 
 #include "databasehandler.h"
+#include "ClickableLabel.h"
 #include "custommessagebox.h"
 
 namespace Ui {
@@ -27,12 +28,20 @@ public:
     ~ReserveCar();
     void SetCarData();
     void paintEvent(QPaintEvent *);
+    QString GenerateOrderNumber();
     QString CurrentUserName;
     QStringList CarData;
 
+private slots:
+    void UpdateDataBase();
+
+signals:
+    void ReservedComplete();
+
 private:
     Ui::ReserveCar *ui;
-
+    QSqlQuery query;
+    QString queryStr;
     QSqlDatabase& database = DatabaseHandler::getInstance().getDatabase();
 };
 

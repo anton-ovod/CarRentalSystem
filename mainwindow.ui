@@ -51,9 +51,6 @@
 background: rgba(237, 215, 214, 80);
 color: white;
 border-radius: 20px;
-font-size: 18px;
-width: 170px;
-height: 55px;
 }
 
 QPushButton::hover {
@@ -102,6 +99,11 @@ selection-color:  rgb(80, 77, 89);
         <width>144</width>
         <height>44</height>
        </size>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+       </font>
       </property>
       <property name="cursor">
        <cursorShape>PointingHandCursor</cursorShape>
@@ -170,8 +172,13 @@ color: rgb(92, 89, 106);
         <x>340</x>
         <y>470</y>
         <width>141</width>
-        <height>41</height>
+        <height>51</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+       </font>
       </property>
       <property name="cursor">
        <cursorShape>PointingHandCursor</cursorShape>
@@ -186,8 +193,13 @@ color: rgb(92, 89, 106);
         <x>60</x>
         <y>470</y>
         <width>141</width>
-        <height>41</height>
+        <height>51</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+       </font>
       </property>
       <property name="cursor">
        <cursorShape>PointingHandCursor</cursorShape>
@@ -280,7 +292,7 @@ color: rgb(92, 89, 106);
         <rect>
          <x>20</x>
          <y>10</y>
-         <width>101</width>
+         <width>91</width>
          <height>91</height>
         </rect>
        </property>
@@ -470,7 +482,7 @@ background: rgba(232, 216, 255, 128);
 
 </string>
    </property>
-   <widget class="QLabel" name="CreateRideBtn">
+   <widget class="QLabel" name="CreateRideLogo">
     <property name="geometry">
      <rect>
       <x>50</x>
@@ -489,7 +501,7 @@ background: rgba(232, 216, 255, 128);
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QPushButton" name="creatRideBtn">
+   <widget class="QPushButton" name="createRideBtn">
     <property name="geometry">
      <rect>
       <x>80</x>

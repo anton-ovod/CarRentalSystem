@@ -14,6 +14,8 @@ Sign_In::Sign_In(QWidget *parent) :
         cleanLineEdit();
         emit this->backLogIn();
     });
+
+    connect(ui->PasswordTxt, &QLineEdit::textChanged, this, &Sign_In::CheckPassword);
 }
 
 
@@ -47,18 +49,18 @@ void Sign_In::insertData()
 }
 void Sign_In::getInput()
 {
-    signName = ui->fullNameTxt->text();
-    signPassword = ui->passwordTxt->text();
-    signEmail = ui->emailTxt->text();
-    signPhone = ui->phoneTxt->text();
+    signName = ui->NameTxt->text().trimmed();
+    signPassword = ui->PasswordTxt->text().trimmed();
+    signEmail = ui->EmailTxt->text().trimmed();
+    signPhone = ui->PhoneTxt->text().trimmed();
 }
 
 void Sign_In::cleanLineEdit()
 {
-    ui->fullNameTxt->clear();
-    ui->passwordTxt->clear();
-    ui->emailTxt->clear();
-    ui->phoneTxt->clear();
+    ui->NameTxt->clear();
+    ui->PasswordTxt->clear();
+    ui->EmailTxt->clear();
+    ui->PhoneTxt->clear();
 }
 
 void Sign_In::paintEvent(QPaintEvent *)
@@ -74,15 +76,51 @@ Sign_In::~Sign_In()
     delete ui;
 }
 
+void Sign_In::CheckPassword()
+{
+    QString password = ui->PasswordTxt->text();
+    bool hasMinLength = password.length() >= 8;
+    bool hasUppercase = password.contains(QRegularExpression("[A-Z]"));
+    bool hasNumber = password.contains(QRegularExpression("\\d"));
+    bool hasSpecialSymbol = password.contains(QRegularExpression("[^a-zA-Z0-9]"));
 
+    ui->LengthCheck->setPixmap(hasMinLength ? QPixmap(":/images/images/tick.png") : QPixmap(":/images/images/cross.png"));
+    ui->UpperCaseCheck->setPixmap(hasUppercase ? QPixmap(":/images/images/tick.png") : QPixmap(":/images/images/cross.png"));
+    ui->NumberCheck->setPixmap(hasNumber ? QPixmap(":/images/images/tick.png") : QPixmap(":/images/images/cross.png"));
+    ui->SpecSymbCheck->setPixmap(hasSpecialSymbol ? QPixmap(":/images/images/tick.png") : QPixmap(":/images/images/cross.png"));
+}
 
 void Sign_In::on_signBtn_clicked()
 {
     getInput();
+    bool hasMinLength = signPassword.length() >= 8;
+    bool hasUppercase = signPassword.contains(QRegularExpression("[A-Z]"));
+    bool hasNumber = signPassword.contains(QRegularExpression("\\d"));
+    bool hasSpecialSymbol = signPassword.contains(QRegularExpression("[^a-zA-Z0-9]"));
+
+    QRegularExpression emailRegex("^\\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}\\b$");
+    bool isEmailValid = emailRegex.match(signEmail).hasMatch();
+
     if(signName.isEmpty() || signPassword.isEmpty() ||
         signEmail.isEmpty() || signPhone.isEmpty())
     {
         CustomMessageBox messageBox("You need to enter all the information beforehead");
+        int result = messageBox.exec();
+        if (result == QMessageBox::Ok) {
+            messageBox.close();
+        }
+    }
+    else if(!hasMinLength || !hasUppercase || !hasNumber || !hasSpecialSymbol)
+    {
+        CustomMessageBox messageBox("Your password is too weak");
+        int result = messageBox.exec();
+        if (result == QMessageBox::Ok) {
+            messageBox.close();
+        }
+    }
+    else if(!isEmailValid)
+    {
+        CustomMessageBox messageBox("Your email address is not correct");
         int result = messageBox.exec();
         if (result == QMessageBox::Ok) {
             messageBox.close();

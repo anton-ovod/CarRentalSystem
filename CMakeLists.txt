@@ -36,6 +36,9 @@ set(PROJECT_SOURCES
         reservecar.cpp
         reservecar.h
         reservecar.ui
+        createride.cpp
+        createride.h
+        createride.ui
         ClickableLabel.cpp
         ClickableLabel.h
         custommessagebox.cpp

@@ -8,8 +8,11 @@ FindRide::FindRide(QWidget *parent) :
     ui->setupUi(this);
     this->setFixedSize(800, 600);
     this->setWindowTitle("Find Ride");
+    ReservePage = new ReserveCar;
     connect(ui->searchArea, SIGNAL(textChanged(QString)), this, SLOT(search()));
-    appendData();
+
+    connect(ReservePage, &ReserveCar::ReservedComplete, this, &FindRide::RefreshData);
+
 }
 
 FindRide::~FindRide()
@@ -92,7 +95,7 @@ void FindRide::on_reserveBtn_clicked()
 {
     if(getCurrentData())
     {
-        ReservePage = new ReserveCar;
+
         ReservePage->CurrentUserName = CurrentUserName;
         ReservePage->CarData = CarData;
         ReservePage->SetCarData();
@@ -100,10 +103,28 @@ void FindRide::on_reserveBtn_clicked()
         qDebug() << CarData;
     }
 }
+void FindRide::RefreshData()
+{
+    if(!database.open())
+    {
+        CustomMessageBox messageBox("Something went wrong!");
+        int result = messageBox.exec();
+        if (result == QMessageBox::Ok) {
+            messageBox.close();
+        }
+    }
+    else
+    {
+        tableModel->select();
+        ui->CarsView->viewport()->repaint();
+
+        database.close();
+    }
+}
 
 void FindRide::search()
 {
-    QString search = ui->searchArea->text();
+    QString search = ui->searchArea->text().trimmed();
     if(!database.open())
     {
         CustomMessageBox messageBox("Something went wrong!");

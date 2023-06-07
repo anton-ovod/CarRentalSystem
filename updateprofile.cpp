@@ -131,10 +131,10 @@ void UpdateProfile::on_cancelBtn_clicked()
 
 void UpdateProfile::on_updateBtn_clicked()
 {
-    QString newName = ui->showUserName->text();
-    QString newEmail = ui->showEmail->text();
-    QString newPhoneNumber = ui->showPhoneNumber->text();
-    QString newPassword = ui->showPassword->text();
+    QString newName = ui->showUserName->text().trimmed();
+    QString newEmail = ui->showEmail->text().trimmed();
+    QString newPhoneNumber = ui->showPhoneNumber->text().trimmed();
+    QString newPassword = ui->showPassword->text().trimmed();
 
     if(!database.open())
     {
@@ -159,7 +159,6 @@ void UpdateProfile::on_updateBtn_clicked()
         }
         else
         {
-
             if(query.next())
             {
                 CurrentUserID = query.value(0).toInt();

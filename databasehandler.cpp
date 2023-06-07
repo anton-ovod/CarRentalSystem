@@ -50,6 +50,22 @@ bool DatabaseHandler::initializeDatabase()
         qDebug() << "Error creating <Users> table : "<< query.lastError().text();
     }
 
+    QString AdminQuery = "INSERT INTO USERS (UserName, Password, Email, PhoneNumber, OrderNumber) "
+                         "SELECT :username, :password "
+                         "WHERE NOT EXISTS (SELECT 1 FROM USERS WHERE UserName = :username)";
+
+    query.bindValue(":username", "admin");
+    query.bindValue(":password", "admin");
+
+    if (query.exec()) {
+        if (query.numRowsAffected() > 0) {
+            qDebug() << "Admin succssefully added";
+        } else {
+            qDebug() << "Error with inserting admin account";
+        }
+    } else {
+        qDebug() << "Something went wrong";
+    }
 
     QString createCarsTabel = "CREATE TABLE IF NOT EXISTS CARS ("
                                "id INTEGER PRIMARY KEY AUTOINCREMENT,"

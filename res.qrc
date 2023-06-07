@@ -34,5 +34,13 @@
         <file>images/owner.png</file>
         <file>images/price.png</file>
         <file>images/seats.png</file>
+        <file>images/color-white.png</file>
+        <file>images/engine-white.png</file>
+        <file>images/model-white.png</file>
+        <file>images/owner-white.png</file>
+        <file>images/price-white.png</file>
+        <file>images/seat-white.png</file>
+        <file>images/cross.png</file>
+        <file>images/tick.png</file>
     </qresource>
 </RCC>

@@ -27,6 +27,7 @@ public:
 
     void paintEvent(QPaintEvent *);
     void appendData();
+    void RefreshData();
     int getCurrentData();
     QString CurrentUserName;
 

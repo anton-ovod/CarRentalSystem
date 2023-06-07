@@ -6,7 +6,7 @@ Administrator::Administrator(QWidget *parent) :
     ui(new Ui::Administrator)
 {
     ui->setupUi(this);
-    this->setFixedSize(800, 600);
+    this->setFixedSize(880, 600);
     this->setWindowTitle("Administration");
     connect(ui->searchLine, SIGNAL(textChanged(QString)), this, SLOT(search()));
 }
@@ -14,9 +14,11 @@ Administrator::Administrator(QWidget *parent) :
 void Administrator::appendData()
 {
         tableModel = new QSqlTableModel(this);
+        //RoundedHeader* roundedHeader = new RoundedHeader(Qt::Horizontal, ui->usersView);
+
         tableModel->setTable("USERS");
         tableModel->select();
-
+        //ui->usersView->setHorizontalHeader(roundedHeader);
         ui->usersView->setModel(tableModel);
         ui->usersView->hideColumn(0);
         ui->usersView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
@@ -35,7 +37,7 @@ void Administrator::paintEvent(QPaintEvent *)
 
 void Administrator::search()
 {
-    QString search = ui->searchLine->text();
+    QString search = ui->searchLine->text().trimmed();
 
     tableModel->setTable("USERS");
 

@@ -15,6 +15,7 @@
 #include "ClickableLabel.h"
 #include "custommessagebox.h"
 #include "findride.h"
+#include "createride.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -32,7 +33,7 @@ public:
     QString CurrentUserName;
     void init();
     void myTrips();
-    FindRide *findRide;
+
 
 signals:
     void backToLogIn();
@@ -43,6 +44,8 @@ private slots:
 private:
     Ui::MainWindow *ui;
     UpdateProfile *updatePage;
+    FindRide *findRide;
+    CreateRide *createRide;
     QString queryStr;
     QSqlQuery query;
     QSqlDatabase& database = DatabaseHandler::getInstance().getDatabase();

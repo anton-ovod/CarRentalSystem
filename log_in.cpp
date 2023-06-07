@@ -74,8 +74,8 @@ void Log_in::HandleLogInInput()
     }
     else
     {
-        UserName = ui->userNameTxt->text();
-        Password = ui->passwordTxt->text();
+        UserName = ui->userNameTxt->text().trimmed();
+        Password = ui->passwordTxt->text().trimmed();
         QSqlQuery query;
         query.prepare("SELECT * FROM USERS WHERE UserName = :username AND Password = :password");
         query.bindValue(":username", UserName);

@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
+    <width>880</width>
     <height>600</height>
    </rect>
   </property>
@@ -36,13 +36,13 @@
     <rect>
      <x>25</x>
      <y>120</y>
-     <width>751</width>
+     <width>831</width>
      <height>400</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <pointsize>14</pointsize>
+     <pointsize>12</pointsize>
     </font>
    </property>
    <property name="cursor" stdset="0">
@@ -53,27 +53,49 @@
 border: 1px solid rgba(118, 122, 142, 153);
 background: rgba(224, 222, 225, 51);
 selection-background-color: rgba(136, 132, 159, 204);
-selection-color: rgb(248, 246, 250);
 border-radius: 20px;
+text-align: center;
 }
-
-QHeaderView::section {
-border-radius: 20px;
+QHeaderView::section{
 height: 30px;
 color: rgb(239, 238, 241);
 background: rgb(108, 104, 124);
-font-size: 15px;
+}
+QHeaderView::section:first
+{
+border-top-left-radius: 20px;
+}
+QHeaderView::section:last
+{
+border-top-right-radius: 20px;
+}
+QHeaderView{
+background-color: transparent;
+}
+
+QHeaderView::section:selected
+{
+background-color: rgb(108, 104, 124);
 }
 </string>
    </property>
+   <attribute name="horizontalHeaderHighlightSections">
+    <bool>false</bool>
+   </attribute>
+   <attribute name="verticalHeaderVisible">
+    <bool>false</bool>
+   </attribute>
+   <attribute name="verticalHeaderHighlightSections">
+    <bool>false</bool>
+   </attribute>
   </widget>
   <widget class="QPushButton" name="BackBtn">
    <property name="geometry">
     <rect>
-     <x>650</x>
-     <y>540</y>
-     <width>120</width>
-     <height>40</height>
+     <x>699</x>
+     <y>539</y>
+     <width>151</width>
+     <height>41</height>
     </rect>
    </property>
    <property name="minimumSize">
@@ -88,6 +110,11 @@ font-size: 15px;
      <height>16777215</height>
     </size>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
    <property name="cursor">
     <cursorShape>PointingHandCursor</cursorShape>
    </property>
@@ -95,7 +122,6 @@ font-size: 15px;
     <string notr="true">QPushButton {
 background: rgba(124, 128, 149, 179);
 border-radius: 20px;
-font-size: 16px;
 color: white;
 }
 
@@ -118,7 +144,7 @@ background: rgba(124, 128, 149, 100);
    </property>
    <property name="font">
     <font>
-     <pointsize>14</pointsize>
+     <pointsize>13</pointsize>
     </font>
    </property>
    <property name="cursor">
@@ -132,14 +158,17 @@ border-radius: 15px;
 
 }</string>
    </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
   </widget>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>30</x>
-     <y>65</y>
-     <width>40</width>
-     <height>40</height>
+     <x>40</x>
+     <y>70</y>
+     <width>35</width>
+     <height>35</height>
     </rect>
    </property>
    <property name="text">
@@ -155,7 +184,7 @@ border-radius: 15px;
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>400</x>
+     <x>450</x>
      <y>70</y>
      <width>401</width>
      <height>30</height>
