@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>797</width>
-    <height>598</height>
+    <width>800</width>
+    <height>600</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -22,7 +22,7 @@
      <x>0</x>
      <y>0</y>
      <width>801</width>
-     <height>581</height>
+     <height>600</height>
     </rect>
    </property>
    <widget class="QLabel" name="HeaderLabel">
@@ -79,10 +79,10 @@ background: rgba(154, 154, 154, 100);
    <widget class="QTableView" name="CarsView">
     <property name="geometry">
      <rect>
-      <x>10</x>
+      <x>0</x>
       <y>250</y>
-      <width>771</width>
-      <height>331</height>
+      <width>801</width>
+      <height>341</height>
      </rect>
     </property>
     <property name="font">

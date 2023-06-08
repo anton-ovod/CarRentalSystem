@@ -25,9 +25,9 @@
   <widget class="QWidget" name="Title" native="true">
    <property name="geometry">
     <rect>
-     <x>160</x>
+     <x>-10</x>
      <y>20</y>
-     <width>781</width>
+     <width>1111</width>
      <height>111</height>
     </rect>
    </property>
@@ -63,7 +63,7 @@ color: rgb(242, 239, 232);
   <widget class="QWidget" name="SignUp" native="true">
    <property name="geometry">
     <rect>
-     <x>640</x>
+     <x>630</x>
      <y>460</y>
      <width>231</width>
      <height>81</height>
@@ -206,7 +206,7 @@ border-radius: 20px;
 list-style: none;
 border-bottom:1px solid rgba(249, 247, 250, 204);
 border-radius: 20px;
-color: rgba(222, 220, 223, 240);
+color: white;
 }</string>
    </property>
    <layout class="QGridLayout" name="gridLayout_4">
@@ -485,9 +485,9 @@ color: rgba(222, 220, 223, 240);
   <widget class="QWidget" name="Password" native="true">
    <property name="geometry">
     <rect>
-     <x>170</x>
-     <y>420</y>
-     <width>331</width>
+     <x>190</x>
+     <y>400</y>
+     <width>321</width>
      <height>171</height>
     </rect>
    </property>
@@ -501,22 +501,7 @@ color:rgba(234, 232, 236, 230);
 }</string>
    </property>
    <layout class="QGridLayout" name="gridLayout_5">
-    <item row="2" column="2">
-     <widget class="QLabel" name="NumberPassword">
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>At least one number</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-    </item>
-    <item row="3" column="2">
+    <item row="3" column="1">
      <widget class="QLabel" name="SpecSymbolPass">
       <property name="font">
        <font>
@@ -527,27 +512,12 @@ color:rgba(234, 232, 236, 230);
        <string>At least one special symbol</string>
       </property>
       <property name="alignment">
-       <set>Qt::AlignCenter</set>
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
       </property>
      </widget>
     </item>
-    <item row="1" column="2">
-     <widget class="QLabel" name="UppercaseLetter">
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>At least one uppercase letter </string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-    </item>
-    <item row="2" column="0">
-     <widget class="QLabel" name="NumberCheck">
+    <item row="1" column="0">
+     <widget class="QLabel" name="UpperCaseCheck">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
         <horstretch>0</horstretch>
@@ -556,8 +526,8 @@ color:rgba(234, 232, 236, 230);
       </property>
       <property name="maximumSize">
        <size>
-        <width>30</width>
-        <height>30</height>
+        <width>32</width>
+        <height>32</height>
        </size>
       </property>
       <property name="text">
@@ -571,8 +541,8 @@ color:rgba(234, 232, 236, 230);
       </property>
      </widget>
     </item>
-    <item row="3" column="0">
-     <widget class="QLabel" name="SpecSymbCheck">
+    <item row="2" column="0">
+     <widget class="QLabel" name="NumberCheck">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
         <horstretch>0</horstretch>
@@ -581,8 +551,8 @@ color:rgba(234, 232, 236, 230);
       </property>
       <property name="maximumSize">
        <size>
-        <width>30</width>
-        <height>30</height>
+        <width>32</width>
+        <height>32</height>
        </size>
       </property>
       <property name="text">
@@ -606,8 +576,8 @@ color:rgba(234, 232, 236, 230);
       </property>
       <property name="maximumSize">
        <size>
-        <width>30</width>
-        <height>30</height>
+        <width>32</width>
+        <height>32</height>
        </size>
       </property>
       <property name="text">
@@ -621,8 +591,8 @@ color:rgba(234, 232, 236, 230);
       </property>
      </widget>
     </item>
-    <item row="1" column="0">
-     <widget class="QLabel" name="UpperCaseCheck">
+    <item row="3" column="0">
+     <widget class="QLabel" name="SpecSymbCheck">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
         <horstretch>0</horstretch>
@@ -631,8 +601,8 @@ color:rgba(234, 232, 236, 230);
       </property>
       <property name="maximumSize">
        <size>
-        <width>30</width>
-        <height>30</height>
+        <width>32</width>
+        <height>32</height>
        </size>
       </property>
       <property name="text">
@@ -646,7 +616,37 @@ color:rgba(234, 232, 236, 230);
       </property>
      </widget>
     </item>
-    <item row="0" column="2">
+    <item row="1" column="1">
+     <widget class="QLabel" name="UppercaseLetter">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>At least one uppercase letter </string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="1">
+     <widget class="QLabel" name="NumberPassword">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>At least one number</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
      <widget class="QLabel" name="PasswordLength">
       <property name="font">
        <font>
@@ -657,22 +657,9 @@ color:rgba(234, 232, 236, 230);
        <string>8 symbols length</string>
       </property>
       <property name="alignment">
-       <set>Qt::AlignCenter</set>
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
       </property>
      </widget>
-    </item>
-    <item row="1" column="1">
-     <spacer name="horizontalSpacer">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>40</width>
-        <height>20</height>
-       </size>
-      </property>
-     </spacer>
     </item>
    </layout>
   </widget>

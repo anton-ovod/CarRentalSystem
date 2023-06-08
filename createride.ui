@@ -80,7 +80,7 @@ color: rgb(92, 89, 106);
        </font>
       </property>
       <property name="text">
-       <string>Car Price (/day)</string>
+       <string>Car Price ($/day)</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -118,7 +118,7 @@ color: rgb(92, 89, 106);
      </widget>
     </item>
     <item row="9" column="0">
-     <widget class="QLineEdit" name="carColor">
+     <widget class="QLineEdit" name="carCapacity">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
         <horstretch>0</horstretch>
@@ -208,7 +208,7 @@ color: rgb(92, 89, 106);
      </widget>
     </item>
     <item row="7" column="1">
-     <widget class="QLineEdit" name="carCapacity">
+     <widget class="QLineEdit" name="carColor">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
         <horstretch>0</horstretch>

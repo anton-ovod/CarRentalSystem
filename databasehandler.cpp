@@ -50,21 +50,20 @@ bool DatabaseHandler::initializeDatabase()
         qDebug() << "Error creating <Users> table : "<< query.lastError().text();
     }
 
-    QString AdminQuery = "INSERT INTO USERS (UserName, Password, Email, PhoneNumber, OrderNumber) "
-                         "SELECT :username, :password "
-                         "WHERE NOT EXISTS (SELECT 1 FROM USERS WHERE UserName = :username)";
+    query.prepare("INSERT INTO USERS (UserName, Password, Email, PhoneNumber, OrderNumber) "
+                         "SELECT :username, :password, '', '', '' "
+                         "WHERE NOT EXISTS (SELECT 1 FROM USERS WHERE UserName = :username)");
 
     query.bindValue(":username", "admin");
     query.bindValue(":password", "admin");
 
-    if (query.exec()) {
-        if (query.numRowsAffected() > 0) {
-            qDebug() << "Admin succssefully added";
-        } else {
-            qDebug() << "Error with inserting admin account";
-        }
-    } else {
-        qDebug() << "Something went wrong";
+    if (query.exec())
+    {
+        qDebug() << "Admin succssefully added";
+    }
+    else
+    {
+        qDebug() << "Error with inserting admin account";
     }
 
     QString createCarsTabel = "CREATE TABLE IF NOT EXISTS CARS ("
@@ -72,7 +71,8 @@ bool DatabaseHandler::initializeDatabase()
                                "CarName TEXT,"
                                "CarModel TEXT,"
                                "CarCapacity TEXT,"
-                               "CarColour TEXT,"
+                               "CarColor TEXT,"
+                               "EngineCapacity TEXT,"
                                "CarOwner TEXT,"
                                "CarPrice TEXT,"
                                "CarHolder TEXT DEFAULT 'Ready for rent'"

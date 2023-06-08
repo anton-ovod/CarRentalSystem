@@ -33,8 +33,8 @@ void ReserveCar::SetCarData()
     ui->Name->setText(CarData.at(1));
     ui->Model->setText(CarData.at(2));
     ui->Seats->setText(CarData.at(3));
-    ui->Engine->setText(CarData.at(4));
-    ui->Color->setText(CarData.at(5));
+    ui->Engine->setText(CarData.at(5));
+    ui->Color->setText(CarData.at(4));
     ui->Price->setText(CarData.at(7));
     ui->Owner->setText(CarData.at(6));
 }

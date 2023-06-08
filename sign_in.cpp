@@ -16,6 +16,8 @@ Sign_In::Sign_In(QWidget *parent) :
     });
 
     connect(ui->PasswordTxt, &QLineEdit::textChanged, this, &Sign_In::CheckPassword);
+    connect(ui->EmailTxt, &QLineEdit::textChanged, this, &Sign_In::CheckEmail);
+    connect(ui->PhoneTxt, &QLineEdit::textChanged, this, &Sign_In::CheckPhoneNumber);
 }
 
 
@@ -76,9 +78,38 @@ Sign_In::~Sign_In()
     delete ui;
 }
 
-void Sign_In::CheckPassword()
+bool Sign_In::CheckEmail()
 {
-    QString password = ui->PasswordTxt->text();
+    QString Email = ui->EmailTxt->text().trimmed();
+    QRegularExpression emailRegex("^\\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}\\b$");
+    bool isEmailValid = emailRegex.match(Email).hasMatch();
+    if(!isEmailValid)
+    {
+        ui->EmailTxt->setStyleSheet("color: rgb(192, 192, 192);");
+        return 0;
+    }
+    ui->EmailTxt->setStyleSheet("color: white;");
+    return 1;
+
+
+}
+bool Sign_In::CheckPhoneNumber()
+{
+    QString PhoneNumber = ui->PhoneTxt->text().trimmed();
+    QRegularExpression regex("^\\+?[1-9]\\d{1,14}$");
+    bool match = regex.match(PhoneNumber).hasMatch();
+    if(!match)
+    {
+        ui->PhoneTxt->setStyleSheet("color: rgb(192, 192, 192);");
+        return 0;
+    }
+        ui->PhoneTxt->setStyleSheet("color: white;");
+        return 1;
+}
+
+bool Sign_In::CheckPassword()
+{
+    QString password = ui->PasswordTxt->text().trimmed();
     bool hasMinLength = password.length() >= 8;
     bool hasUppercase = password.contains(QRegularExpression("[A-Z]"));
     bool hasNumber = password.contains(QRegularExpression("\\d"));
@@ -88,6 +119,13 @@ void Sign_In::CheckPassword()
     ui->UpperCaseCheck->setPixmap(hasUppercase ? QPixmap(":/images/images/tick.png") : QPixmap(":/images/images/cross.png"));
     ui->NumberCheck->setPixmap(hasNumber ? QPixmap(":/images/images/tick.png") : QPixmap(":/images/images/cross.png"));
     ui->SpecSymbCheck->setPixmap(hasSpecialSymbol ? QPixmap(":/images/images/tick.png") : QPixmap(":/images/images/cross.png"));
+    if(!hasNumber || !hasSpecialSymbol || !hasMinLength || !hasMinLength)
+    {
+        ui->PasswordTxt->setStyleSheet("color: rgb(192, 192, 192);");
+        return 0;
+    }
+    ui->PasswordTxt->setStyleSheet("color: white;");
+        return 1;
 }
 
 void Sign_In::on_signBtn_clicked()
@@ -98,8 +136,7 @@ void Sign_In::on_signBtn_clicked()
     bool hasNumber = signPassword.contains(QRegularExpression("\\d"));
     bool hasSpecialSymbol = signPassword.contains(QRegularExpression("[^a-zA-Z0-9]"));
 
-    QRegularExpression emailRegex("^\\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}\\b$");
-    bool isEmailValid = emailRegex.match(signEmail).hasMatch();
+
 
     if(signName.isEmpty() || signPassword.isEmpty() ||
         signEmail.isEmpty() || signPhone.isEmpty())
@@ -110,17 +147,25 @@ void Sign_In::on_signBtn_clicked()
             messageBox.close();
         }
     }
-    else if(!hasMinLength || !hasUppercase || !hasNumber || !hasSpecialSymbol)
+    else if(!CheckEmail())
     {
-        CustomMessageBox messageBox("Your password is too weak");
+        CustomMessageBox messageBox("Your email is not valid!");
         int result = messageBox.exec();
         if (result == QMessageBox::Ok) {
             messageBox.close();
         }
     }
-    else if(!isEmailValid)
+    else if(!CheckPassword())
     {
-        CustomMessageBox messageBox("Your email address is not correct");
+        CustomMessageBox messageBox("Your password is too weak!");
+        int result = messageBox.exec();
+        if (result == QMessageBox::Ok) {
+            messageBox.close();
+        }
+    }
+    else if(!CheckPhoneNumber())
+    {
+        CustomMessageBox messageBox("Your phone number is not valid!");
         int result = messageBox.exec();
         if (result == QMessageBox::Ok) {
             messageBox.close();
@@ -135,7 +180,6 @@ void Sign_In::on_signBtn_clicked()
             if (result == QMessageBox::Ok) {
                 messageBox.close();
             }
-            return;
         }
         QSqlQuery sql;
         QString checkExist = "SELECT * from USERS where UserName = '"+signName+"' ";

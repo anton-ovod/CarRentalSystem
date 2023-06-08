@@ -31,7 +31,9 @@ public:
     void paintEvent(QPaintEvent *);
     void cleanLineEdit();
     void insertData();
-    void CheckPassword();
+    bool CheckPassword();
+    bool CheckEmail();
+    bool CheckPhoneNumber();
 
 signals:
     void backLogIn();

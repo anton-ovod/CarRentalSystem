@@ -23,6 +23,9 @@ public:
 
     void paintEvent(QPaintEvent *);
     void ClearInput();
+    bool CheckSeats();
+    bool CheckPrice();
+    bool CheckEngine();
     QString CurrentUserName;
 
 private slots:

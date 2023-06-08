@@ -5,6 +5,7 @@
 #include <QPainter>
 #include <QSqlQueryModel>
 #include <QSqlDatabase>
+#include <QRegularExpression>
 
 #include "databasehandler.h"
 #include "custommessagebox.h"
@@ -24,6 +25,10 @@ public:
     void paintEvent(QPaintEvent *);
     QString CurrentUserName;
     void InitData();
+    bool CheckUserName();
+    bool CheckPassword();
+    bool CheckEmail();
+    bool CheckPhoneNumber();
 
 private slots:
     void on_updateBtn_clicked();
