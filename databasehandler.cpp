@@ -29,6 +29,10 @@ bool DatabaseHandler::initializeDatabase()
     if (isInitialized)
         return true;
     db = QSqlDatabase::addDatabase("QSQLITE");
+
+    //QString docPath = QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation);
+    //QString dbPath = QDir(docPath).filePath("CarRentalSystem.db");
+
     db.setDatabaseName("CarRentalSystem.db");
 
     if (!db.open()) {

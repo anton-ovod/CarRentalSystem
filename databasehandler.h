@@ -7,6 +7,7 @@
 #include <QDebug>
 #include <QCoreApplication>
 #include <QDir>
+#include <QStandardPaths>
 
 class DatabaseHandler {
 public:
